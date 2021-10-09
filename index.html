@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="nb-NO">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="/scripts/lang.js"></script>
+    <script src="/scripts/form.js"></script>
+    <script src="/scripts/scripts.js"></script>
+
+    <title>Lei Norbert! Han er best!</title>
+</head>
+
+<body>
+    <div class="languages">
+        <img src="/img/no.png" alt="norsk" onclick="setLang('no')">
+        <img src="/img/en.png" alt="english" onclick="setLang('en')">
+        <img src="/img/pl.png" alt="polish" onclick="setLang('pl')">
+    </div>
+    <div class="container">
+        <a class="welcome item active" href="#welcome">
+            <div><i class="fas fa-caret-down"></i></div>
+        </a>
+        <a class="me item" href="#me">
+            <div><i class="fas fa-user"></i></div>
+        </a>
+        <a class="contact item" href="#contact">
+            <div><i class="fas fa-phone-alt"></i></div>
+        </a>
+        <div class="main">
+            <div id="welcome" class="view">
+                <div class="greeting">
+                    <h1>Hei!</h1>
+                    <h2>Hyggelig å se deg!</h2>
+                    <h3><i class="far fa-hand-point-left"></i>Bruk knappene til å navigere</h3>
+                </div>
+            </div>
+            <div id="me" class="view1">
+                <div class="left">
+                    <p>Jeg er </p>
+                    <h1>Norbert!</h1>
+                    <table class="lefttab">
+                        <tr>
+                            <th id="#lage">Alder:</th>
+                        </tr>
+                        <tr>
+                            <td id="#tage">25 år gammel</td>
+                        </tr>
+                        <tr>
+                            <th id="#lloc">Sted:</th>
+                        </tr>
+                        <tr>
+                            <td id="#tloc">Oslo, Norge</td>
+                        </tr>
+                        <tr>
+                            <th id="#llang">Språk:</th>
+                        </tr>
+                        <tr>
+                            <td id="#tlang">Engelsk, Norsk, Tysk, Polsk</td>
+                        </tr>
+                        <tr>
+                            <th id="#ledu">Utdanning:</th>
+                        </tr>
+                        <tr>
+                            <td id="#tedu">Videregående skole med fagbrev i IT-bransjen</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="line"></div>
+                <div class="right">
+                    <article>
+                        TEKST O MNIE PO NORWESKU
+                    </article>
+                </div>
+            </div>
+            <div id="contact" class="view3">
+                <div id="tosend">
+                    <h1>Vil du vite mer om meg? Kontakt meg!<i class='far fa-hand-point-down'></i></h1>
+                    <form id="gridform" class="gridform" action="/" method="post">
+                        <input type="email" class="email" name="email" id="email" placeholder="E-posten din..."
+                            required>
+                        <textarea class="mess" type="text" name="message" id="message" onfocus="fnClear(this)"
+                            required>Din melding...</textarea>
+                        <div class="g-recaptcha" data-theme="dark" data-size="normal"
+                            data-sitekey="6LcLfJ4cAAAAABYXlrUo5ojuoXwGHgJIWI4iJTLO"></div>
+                        <p id="inf"></p>
+                        <button class="sbutton" type="submit"><i class="far fa-paper-plane"></i></button>
+                    </form>
+                </div>
+                <div id="reply" class="hidden"></div>
+            </div>
+        </div>
+    </div>
+    <div id="notify">
+        <div class="inf">
+            <p>You can change language in top right corner.</p>
+        </div>
+        <button onclick="$('#notify').slideToggle(1000)">Ok! Thanks!</button>
+    </div>
+</body>
+
+</html>
