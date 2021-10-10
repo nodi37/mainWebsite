@@ -11,15 +11,6 @@ app.use(bodyparser.urlencoded({
   extended: true
 }));
 
-
-let transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: process.env.EMAIL,
-    pass: process.env.EMAIL_PASS,
-  },
-});
-
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html')
 })
@@ -70,6 +61,14 @@ app.post('/', (req, res) => {
 })
 
 async function sendmessage(email, message) {
+  
+  let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.EMAIL,
+      pass: process.env.EMAIL_PASS,
+    },
+  });
 
   const html = `<b> ${email}, napisał:</b><br>${message}`;
   const text = `${email}, napisał: ${message}`;
