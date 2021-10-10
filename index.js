@@ -12,20 +12,13 @@ app.use(bodyparser.urlencoded({
 }));
 
 
-const transporter = nodemailer.createTransport({
-  port: 1025,
+let transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.EMAIL,
+    pass: process.env.EMAIL_PASS,
+  },
 });
-
-// const transporter = nodemailer.createTransport({
-//   host: "smtp.ethereal.email",
-//   port: 587,
-//   secure: false, // true for 465, false for other ports
-//   auth: {
-//     user: testAccount.user, // generated ethereal user
-//     pass: testAccount.pass, // generated ethereal password
-//   },
-// });
-
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html')
@@ -82,8 +75,8 @@ async function sendmessage(email, message) {
   const text = `${email}, napisał: ${message}`;
 
   const info = await transporter.sendMail({
-    from: email,
-    to: "nodi37@o2.pl", ///MY EMAIL Z .ENV
+    from: process.env.EMAIL,
+    to: process.env.MY_EMAIL,
     subject: "Nowa wiadomość z formularza CV",
     text: text,
     html: html,
@@ -93,8 +86,8 @@ async function sendmessage(email, message) {
 }
 sendmessage().catch(err => {
   return (err);
-})
+});
 
 app.listen(3000, () => {
   console.log("Server started on port 3000");
-})
+});
