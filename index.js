@@ -3,7 +3,6 @@ const bodyparser = require('body-parser');
 const app = express();
 const nodemailer = require("nodemailer");
 const axios = require('axios');
-const used = process.memoryUsage().heapUsed / 1024 / 1024;
 
 require('dotenv').config()
 

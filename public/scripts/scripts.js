@@ -1,36 +1,88 @@
 $("document").ready(() => {
-    setTimeout(() => {
-        $(".main").scroll(scrollHandle)
-    }, 100)
-
-    $('.welcome')[0].click();
-    $('.main').scrollTop(0);
+    var isBigger = ($(window).width() > 1000) ? 1 : 0;
+    var currentState = 0;
     var welcome = $("#welcome").position().top;
     var me = $("#me").position().top;
     var contact = $("#contact").position().top;
-    var currentState = 0;
+    handlers();
 
     $(window).on("resize", () => {
+        const wWidth = $(window).width();
+        if (isBigger & (wWidth < 1001)) {
+            isBigger = 0;
+            turnOffHandlers();
+        }
+        if (!isBigger & (wWidth > 1000)) {
+            isBigger = 1;
+            handlers();
+        }
+    })
+
+    function handlers() {
+        if (isBigger) {
+            $('.welcome')[0].click();
+            $(".welcome").addClass("active");
+            $('.main').scrollTop(0);
+            welcome = $("#welcome").position().top;
+            me = $("#me").position().top;
+            contact = $("#contact").position().top;
+            currentState = 0;
+
+            setTimeout(() => {
+                $(".main").scroll(scrollHandle)
+            }, 100);
+
+            $(window).on("resize", toTheTop);
+            $(".item").on("click", (evt) => {
+                clickHandle(evt)
+            });
+        } else {
+            $(".active").removeClass("active");
+        }
+    }
+
+    function turnOffHandlers() {
+        $(".active").removeClass("active");
+        $(".item").unbind("click");
+        $(".main").unbind("scroll");
+        $(window).unbind("resize", toTheTop);
+    }
+
+    function toTheTop() {
+        $(".item").unbind("click");
+        $(".main").unbind("scroll");
         $(".main").stop().animate({
             scrollTop: 0
         }, 100, 'swing', function () {
             welcome = $("#welcome").position().top;
             me = $("#me").position().top;
             contact = $("#contact").position().top;
-            $(".active").removeClass("active");
-            $(".welcome").addClass("active");
+            currentState = 0;
+            if (isBigger) {
+                $(".active").removeClass("active");
+                $(".welcome").addClass("active");
+                setTimeout(() => {
+                    $(".main").scroll(scrollHandle)
+                    $(".item").on("click", (evt) => {
+                        clickHandle(evt)
+                    });
+                }, 200)
+            }
         });
-    })
+    }
 
-    $(".item").on("click", evt => {
-        $(".main").off("scroll", scrollHandle);
+    function clickHandle(evt) {
+        $(".main").unbind("scroll");
+        $(".item").unbind("click");
+
         const classes = $(evt.currentTarget).attr("class");
         const target = "a." + classes.substring(0, classes.indexOf(" "));
         move(target);
-    });
+    }
 
     function scrollHandle() {
-        $(".main").off("scroll", scrollHandle);
+        $(".main").unbind("scroll");
+        $(".item").unbind("click");
 
         const scrolledState = $(".main").scrollTop();
 
@@ -48,7 +100,6 @@ $("document").ready(() => {
     }
 
     function move(target) {
-
         var top = 0;
 
         switch (target) {
@@ -90,16 +141,21 @@ $("document").ready(() => {
 
             setTimeout(() => {
                 $(".main").scroll(scrollHandle)
-            }, 100)
+                $(".item").on("click", (evt) => {
+                    clickHandle(evt)
+                });
+            }, 200)
         });
     }
 })
+
+
 
 var counter = 0;
 
 function fnClear(x) {
     if (counter === 0) {
         counter++;
-        x.value='';
+        x.value = '';
     }
 }
