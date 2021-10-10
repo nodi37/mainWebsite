@@ -74,7 +74,7 @@ async function sendmessage(email, message) {
   const text = `${email}, napisał: ${message}`;
 
   const info = await transporter.sendMail({
-    from: process.env.EMAIL,
+    from: `"Formularz CV na nbtb.eu" <${process.env.EMAIL}>`,
     to: process.env.MY_EMAIL,
     subject: "Nowa wiadomość z formularza CV",
     text: text,
