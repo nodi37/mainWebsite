@@ -20,6 +20,9 @@ $("document").ready(() => {
 
     function handlers() {
         if (isBigger) {
+            $('.welcome').removeAttr('href');
+            $('.me').removeAttr('href');
+            $('.contact').removeAttr('href');
             $('.welcome')[0].click();
             $(".welcome").addClass("active");
             $('.main').scrollTop(0);
@@ -38,6 +41,9 @@ $("document").ready(() => {
             });
         } else {
             $(".active").removeClass("active");
+            $('.welcome').attr('href','#welcome');
+            $('.me').attr('href','#me');
+            $('.contact').attr('href','#contact');
         }
     }
 
@@ -46,6 +52,9 @@ $("document").ready(() => {
         $(".item").unbind("click");
         $(".main").unbind("scroll");
         $(window).unbind("resize", toTheTop);
+        $('.welcome').attr('href','#welcome');
+        $('.me').attr('href','#me');
+        $('.contact').attr('href','#contact');
     }
 
     function toTheTop() {
