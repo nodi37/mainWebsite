@@ -16,6 +16,11 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', (req, res) => {
+  //FOR FAIL2BAN!
+  var ip = req.headers['x-forwarded-for'];
+  var ip2 = req.socket.remoteAddress;
+  console.log("ip1: " + ip + "ip1: "+ ip2);
+
   const {
     email,
     message,
@@ -45,6 +50,7 @@ app.post('/', (req, res) => {
           "status": 200
         })
       } else {
+        console.log("Captcha verification failed. IP1: " + ip + " IP2: " + ip);
         res.json({
           "message": "Bad Request.",
           "status": "400"
