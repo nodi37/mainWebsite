@@ -6,6 +6,7 @@ const axios = require('axios');
 
 require('dotenv').config()
 
+app.set('trust proxy', true);
 app.use(express.static('public'));
 app.use(bodyparser.urlencoded({
   extended: true
@@ -16,11 +17,6 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', (req, res) => {
-  //FOR FAIL2BAN!
-  var ip = req.headers['x-forwarded-for'];
-  var ip2 = req.socket.remoteAddress;
-  console.log("ip1: " + ip + "ip1: "+ ip2);
-
   const {
     email,
     message,
@@ -50,7 +46,7 @@ app.post('/', (req, res) => {
           "status": 200
         })
       } else {
-        console.log("Captcha verification failed. IP1: " + ip + " IP2: " + ip);
+        console.log("[WARN]Captcha verification failed. [IP]:" + req.ip);
         res.json({
           "message": "Bad Request.",
           "status": "400"
