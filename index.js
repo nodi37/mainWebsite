@@ -48,13 +48,13 @@ app.post('/', (req, res) => {
       } else {
         //FOR FAIL2BAN
         const now = new Date();
+        const tZOffset = now.getTimezoneOffset()/60; 
         const month = now.toLocaleString('en-US', { month: 'short' });
         const day = now.getUTCDate();
-        const hours = now.getUTCHours();
+        const hours = now.getUTCHours()-tZOffset;
         const minutes = now.getUTCMinutes();
-        const seconds = now.getUTCSeconds();     
+        const seconds = now.getUTCSeconds();    
         console.log(`${month} ${day} ${hours}:${minutes}:${seconds} Captcha verification failed [${req.ip}]`);
-        
         res.json({
           "message": "Bad Request.",
           "status": "400"
