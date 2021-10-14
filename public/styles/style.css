@@ -204,6 +204,7 @@ h3 {
         height: 0;
         min-height: 100%;
         overflow: scroll;
+        overscroll-behavior: contain;
     }
 
 }

@@ -32,18 +32,19 @@ $("document").ready(() => {
             currentState = 0;
 
             setTimeout(() => {
-                $(".main").scroll(scrollHandle)
+                $(".main").scroll(scrollHandle);
             }, 100);
 
+            $(".right").on("mouseenter", stopAnimateHandler)
             $(window).on("resize", toTheTop);
             $(".item").on("click", (evt) => {
                 clickHandle(evt)
             });
         } else {
             $(".active").removeClass("active");
-            $('.welcome').attr('href','#welcome');
-            $('.me').attr('href','#me');
-            $('.contact').attr('href','#contact');
+            $('.welcome').attr('href', '#welcome');
+            $('.me').attr('href', '#me');
+            $('.contact').attr('href', '#contact');
         }
     }
 
@@ -51,10 +52,19 @@ $("document").ready(() => {
         $(".active").removeClass("active");
         $(".item").unbind("click");
         $(".main").unbind("scroll");
+        $(".right").unbind("mouseenter");
         $(window).unbind("resize", toTheTop);
-        $('.welcome').attr('href','#welcome');
-        $('.me').attr('href','#me');
-        $('.contact').attr('href','#contact');
+        $('.welcome').attr('href', '#welcome');
+        $('.me').attr('href', '#me');
+        $('.contact').attr('href', '#contact');
+    }
+
+    function stopAnimateHandler() {
+        if ($(".right").is(":animated")) {
+            $(".right").stop().animate({
+                scrollTop: 0
+            }, 200, 'swing');
+        }
     }
 
     function toTheTop() {
