@@ -63,16 +63,16 @@ $("document").ready(() => {
 
     $(".right").scroll(rightscroll);
 
-    function rightscroll(e) { //To not let overscroll on Safari! CSS: overscroll-behavior: contain; not work in safari.
+    function rightscroll(e) { //To not let overscroll on Safari! CSS: overscroll-behavior: contain; not work in safari. And nice animation :D
         const columnheight = $(".right").height();
         const articleheight = $(".right>article").height();
         const top = $(".noscroll").height();
         const end = articleheight + top - columnheight;
 
         //STILL TESTING 
-        // console.log("Początek art: " + top);
-        // console.log("Aktualny stan: " + rightScrollTop);
-        // console.log("Koniec art: " + end);
+        // console.log("Start of the art: " + top);
+        // console.log("Actual state: " + rightScrollTop);
+        // console.log("End of the art: " + end);
 
         if (!$(".right").is(":animated")) {
             rightScrollTop = $(".right").scrollTop();
@@ -93,7 +93,7 @@ $("document").ready(() => {
         }
     }
 
-    //OLD function 
+    //OLD function, just animation.
     // function stopAnimateHandler() {
     //     if ($(".right").is(":animated")) {
     //         $(".right").stop().animate({
@@ -197,7 +197,7 @@ $("document").ready(() => {
     }
 
     function righttotop() {
-        const rtop = $(".noscroll").height(); //MOVES RIGHT COLUMN TO RIGHT TOP
+        const rtop = $(".noscroll").height(); //MOVES RIGHT COLUMN TO CORRECT TOP
         $(".right").animate({
             scrollTop: rtop
         }, 400, 'swing');
@@ -205,9 +205,8 @@ $("document").ready(() => {
 })
 
 
-
+//CLEAN MESSAGE FORM ON FIRST CLICK
 var counter = 0;
-
 function fnClear(x) {
     if (counter === 0) {
         counter++;
@@ -215,6 +214,7 @@ function fnClear(x) {
     }
 }
 
+//COPY
 function copy(event) {
     const target = $(event.target).parents('.copybox').attr('id');
     navigator.clipboard.writeText($("#" + target).text());
