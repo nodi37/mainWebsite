@@ -41,8 +41,9 @@ app.post('/', (req, res) => {
       if (success) {
         const info = await sendmessage(email, message);
         console.log("Message sent: " + info.messageId);
+        const mid = info.messageId.slice(1, info.messageId.indexOf("@"));
         res.json({
-          "id": info.messageId,
+          "id": mid,
           "status": 200
         })
       } else {
@@ -84,9 +85,9 @@ async function sendmessage(email, message) {
   const text = `${email}, napisał: ${message}`;
 
   const info = await transporter.sendMail({
-    from: `"Formularz CV na nbtb.eu" <${process.env.EMAIL}>`,
+    from: `"Formularz z nbtb.eu" <${process.env.EMAIL}>`,
     to: process.env.MY_EMAIL,
-    subject: "Nowa wiadomość z formularza CV",
+    subject: "Nowa wiadomość z nbtb.eu",
     text: text,
     html: html,
   });

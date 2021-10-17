@@ -314,7 +314,8 @@ h3 {
 }
 
 #reply,
-#reply p {
+#reply p,
+#reply i {
     text-align: center;
     color: white;
 }
