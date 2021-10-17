@@ -11,7 +11,7 @@ async function submitform() {
     if (token) {
         $("#tosend").addClass("hidden");
         $("#reply").removeClass("hidden");
-        $("#reply").html(`<h1>${comm[0]}</h1>`);
+        $("#reply").html(`<h1>${comm[0]}</h1><i class="fas fa-circle-notch fa-spin"></i>`);
 
         const data = $("#gridform").serialize();
 

@@ -48,12 +48,12 @@ app.post('/', (req, res) => {
       } else {
         //FOR FAIL2BAN
         const now = new Date();
-        const tZOffset = now.getTimezoneOffset()/60; 
-        const month = now.toLocaleString('en-US', { month: 'short' });
-        const day = now.getUTCDate();
-        const hours = now.getUTCHours()-tZOffset;
-        const minutes = now.getUTCMinutes();
-        const seconds = now.getUTCSeconds();    
+        const tZOffset = now.getTimezoneOffset() / 60;
+        const month = now.toLocaleString('en-US', {month: 'short'});
+        const day = (now.getUTCDate()<10)?("0"+now.getUTCDate()):now.getUTCDate();
+        const hours = (now.getUTCHours() - tZOffset<10)?("0"+now.getUTCHours()- tZOffset):(now.getUTCHours()-tZOffset);
+        const minutes = (now.getUTCMinutes()<10)?("0"+now.getUTCMinutes()):now.getUTCMinutes();
+        const seconds = (now.getUTCSeconds()<10)?("0"+now.getUTCSeconds()):now.getUTCSeconds();
         console.log(`${month} ${day} ${hours}:${minutes}:${seconds} Captcha verification failed [${req.ip}]`);
         res.json({
           "message": "Bad Request.",
@@ -71,7 +71,7 @@ app.post('/', (req, res) => {
 })
 
 async function sendmessage(email, message) {
-  
+
   let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -101,6 +101,6 @@ app.listen(3000, () => {
   console.log("Server started on port 3000");
 });
 
-app.use(function(req, res) {
+app.use(function (req, res) {
   res.redirect('/');
 });

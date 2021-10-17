@@ -51,6 +51,7 @@ body {
     justify-content: center;
     background-color: #344150;
 }
+
 /* aktywny item */
 .welcome:hover,
 .me:hover,
@@ -209,11 +210,16 @@ h3 {
 
 }
 
+.noscroll {
+    height: 500px;
+    width: 100%;
+}
+
 .right a {
     color: #aaa;
 }
 
-.right a:hover{
+.right a:hover {
     color: #aaf;
 }
 
@@ -361,6 +367,27 @@ h3 {
     border-radius: 5px;
 }
 
+.copybox {
+    display: flex;
+    background-color: #171717;
+    float: left;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 5px;
+    padding: 0px 0px 0px 10px;
+    color: white;
+    width: 100%;
+}
+
+.cpbtn {
+    font-size: large;
+    padding: 10px;
+    color: white;
+    background-color: #242424;
+    margin-left: 5px;
+    border-radius: 0px 5px 5px 0px;
+}
+
 @keyframes shake {
     0% {
         transform: translateX(0)
@@ -394,6 +421,7 @@ h3 {
     }
 }
 
+/* I can probably play this animation backwards but i wrote them both so... */
 @keyframes toactive {
     0% {
         background-color: #0c1520;

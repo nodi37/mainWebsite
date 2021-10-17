@@ -4,6 +4,7 @@ $("document").ready(() => {
     var welcome = $("#welcome").position().top;
     var me = $("#me").position().top;
     var contact = $("#contact").position().top;
+    var rightScrollTop = 0;
     handlers();
 
     $(window).on("resize", () => {
@@ -16,7 +17,7 @@ $("document").ready(() => {
             isBigger = 1;
             handlers();
         }
-    })
+    });
 
     function handlers() {
         if (isBigger) {
@@ -35,12 +36,13 @@ $("document").ready(() => {
                 $(".main").scroll(scrollHandle);
             }, 100);
 
-            $(".right").on("mouseenter", stopAnimateHandler)
+            //$(".right").on("mouseenter", stopAnimateHandler) //I will use it later
             $(window).on("resize", toTheTop);
             $(".item").on("click", (evt) => {
                 clickHandle(evt)
             });
         } else {
+            righttotop();
             $(".active").removeClass("active");
             $('.welcome').attr('href', '#welcome');
             $('.me').attr('href', '#me');
@@ -52,20 +54,53 @@ $("document").ready(() => {
         $(".active").removeClass("active");
         $(".item").unbind("click");
         $(".main").unbind("scroll");
-        $(".right").unbind("mouseenter");
+        //$(".right").unbind("mouseenter"); //I will use it later
         $(window).unbind("resize", toTheTop);
         $('.welcome').attr('href', '#welcome');
         $('.me').attr('href', '#me');
         $('.contact').attr('href', '#contact');
     }
 
-    function stopAnimateHandler() {
-        if ($(".right").is(":animated")) {
-            $(".right").stop().animate({
-                scrollTop: 0
-            }, 200, 'swing');
+    $(".right").scroll(rightscroll);
+
+    function rightscroll(e) { //To not let overscroll on Safari! CSS: overscroll-behavior: contain; not work in safari.
+        const columnheight = $(".right").height();
+        const articleheight = $(".right>article").height();
+        const top = $(".noscroll").height();
+        const end = articleheight + top - columnheight;
+
+        //STILL TESTING 
+        // console.log("Początek art: " + top);
+        // console.log("Aktualny stan: " + rightScrollTop);
+        // console.log("Koniec art: " + end);
+
+        if (!$(".right").is(":animated")) {
+            rightScrollTop = $(".right").scrollTop();
+
+            if ((rightScrollTop > end + 100)) {
+                console.log("END!");
+                $(".right").animate({
+                    scrollTop: end
+                }, 1000, 'swing');
+            }
+
+            if (rightScrollTop < top - 100) {
+                console.log("TOP");
+                $(".right").animate({
+                    scrollTop: top
+                }, 1000, 'swing');
+            }
         }
     }
+
+    //OLD function 
+    // function stopAnimateHandler() {
+    //     if ($(".right").is(":animated")) {
+    //         $(".right").stop().animate({
+    //             scrollTop: 0
+    //         }, 200, 'swing');
+    //     }
+    // }
 
     function toTheTop() {
         $(".item").unbind("click");
@@ -119,6 +154,8 @@ $("document").ready(() => {
     }
 
     function move(target) {
+        righttotop();
+
         var top = 0;
 
         switch (target) {
@@ -150,14 +187,6 @@ $("document").ready(() => {
             $(target).addClass("active");
             $(".animatein").removeClass("animatein");
 
-            if (top === me) {
-                $(".right").animate({
-                    scrollTop: 200
-                }, 1000, 'swing').animate({
-                    scrollTop: 0
-                }, 400, 'swing');
-            }
-
             setTimeout(() => {
                 $(".main").scroll(scrollHandle)
                 $(".item").on("click", (evt) => {
@@ -165,6 +194,13 @@ $("document").ready(() => {
                 });
             }, 200)
         });
+    }
+
+    function righttotop() {
+        const rtop = $(".noscroll").height(); //MOVES RIGHT COLUMN TO RIGHT TOP
+        $(".right").animate({
+            scrollTop: rtop
+        }, 400, 'swing');
     }
 })
 
@@ -177,4 +213,9 @@ function fnClear(x) {
         counter++;
         x.value = '';
     }
+}
+
+function copy(event) {
+    const target = $(event.target).parents('.copybox').attr('id');
+    navigator.clipboard.writeText($("#" + target).text());
 }
