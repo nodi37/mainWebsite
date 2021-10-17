@@ -318,6 +318,7 @@ h3 {
 #reply i {
     text-align: center;
     color: white;
+    padding: 0px !important;
 }
 
 #inf {
