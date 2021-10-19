@@ -26,6 +26,7 @@ $("document").ready(() => {
             $('.contact').removeAttr('href');
             $('.welcome')[0].click();
             $(".welcome").addClass("active");
+            $('.noscroll').removeClass("hidden");
             $('.main').scrollTop(0);
             welcome = $("#welcome").position().top;
             me = $("#me").position().top;
@@ -37,23 +38,27 @@ $("document").ready(() => {
             }, 100);
 
             //$(".right").on("mouseenter", stopAnimateHandler) //I will use it later
+            $(".right").scroll(rightscroll);
             $(window).on("resize", toTheTop);
             $(".item").on("click", (evt) => {
                 clickHandle(evt)
             });
         } else {
-            righttotop();
+            //righttotop();
             $(".active").removeClass("active");
             $('.welcome').attr('href', '#welcome');
             $('.me').attr('href', '#me');
             $('.contact').attr('href', '#contact');
+            $('.noscroll').addClass('hidden');
         }
     }
 
     function turnOffHandlers() {
+        $('.noscroll').addClass('hidden');
         $(".active").removeClass("active");
         $(".item").unbind("click");
         $(".main").unbind("scroll");
+        $(".right").unbind("scroll");
         //$(".right").unbind("mouseenter"); //I will use it later
         $(window).unbind("resize", toTheTop);
         $('.welcome').attr('href', '#welcome');
@@ -61,9 +66,7 @@ $("document").ready(() => {
         $('.contact').attr('href', '#contact');
     }
 
-    $(".right").scroll(rightscroll);
-
-    function rightscroll(e) { //To not let overscroll on Safari! CSS: overscroll-behavior: contain; not work in safari. And nice animation :D
+    function rightscroll() { //To not let overscroll on Safari! CSS: overscroll-behavior: contain; not work in safari. And nice animation :D
         const columnheight = $(".right").height();
         const articleheight = $(".right>article").height();
         const top = $(".noscroll").height();
