@@ -1,12 +1,28 @@
 :root {
   //Variables
   --header-text-color: white;
+
   --main-section-text-color: white;
-  //--color-text-secondary: dimgray;
+
   --color-text-secondary: white;
-  --background-gradient: linear-gradient(to right bottom, #99a799, #d3e4cd);
-  //--background-gradient: linear-gradient(to right bottom,#7882A4,#EFEFEF);
+  //--color-text-secondary: dimgray;
+
+  --color-card-one: #e02401;
+
+  --background-gradient: linear-gradient(to right bottom, #9ad0ec, #1572a1);
+
+  --card-gradient: linear-gradient(to left top, #f76e11, #e02401);
+
+  --card-shadow: 0 0 6rem #0000005b;
+
+  --image-border: 10px solid white;
+
+  --popup-backgroud: linear-gradient(to right bottom, #395b6498, #2c3333a1);
+
+  --popup-content-backgroud: linear-gradient(to left top, #D3DEDC, #92A9BD);
 }
+
+//800PX do mobilnego!
 
 *,
 *::after,
@@ -18,18 +34,73 @@
 
 body {
   box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 400;
   line-height: 1.7;
 }
 
 html {
   font-size: 62.5%;
+
+  @media only screen and (max-width: 100em) {
+    //1600px
+    font-size: 55%;
+  }
+
+  @media only screen and (max-width: 90em) {
+    //1440px
+    font-size: 45%;
+  }
+
+  @media only screen and (min-width: 137.5em) {
+    //2200px
+    font-size: 65%;
+  }
+
+  @media only screen and (min-width: 150em) {
+    //2400px
+    font-size: 75%;
+  }
 }
 
 //Utility classes
 .content-max-width {
   width: 100%;
   max-width: 120rem;
- //margin: 0 auto;
+}
+
+//ANIMATIONS
+
+@keyframes topLeft {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(2px, -3px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(20rem);
+  }
+
+  100% {
+    transform: translate(0);
+    opacity: 1;
+  }
+}
+
+@keyframes makeVisible {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate(0);
+  }
 }

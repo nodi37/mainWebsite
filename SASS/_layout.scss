@@ -1,8 +1,16 @@
 body {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     min-height: 100vh;
     background-image: var(--background-gradient);
+}
+
+.card {
+    padding: 5rem;
+    width: 100%;
+    max-width: 125rem;
+    border-radius: 10px;
+    box-shadow: var(--card-shadow);
+    background-image: var(--card-gradient);
 }
