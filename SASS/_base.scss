@@ -1,0 +1,35 @@
+:root {
+  //Variables
+  --header-text-color: white;
+  --main-section-text-color: white;
+  //--color-text-secondary: dimgray;
+  --color-text-secondary: white;
+  --background-gradient: linear-gradient(to right bottom, #99a799, #d3e4cd);
+  //--background-gradient: linear-gradient(to right bottom,#7882A4,#EFEFEF);
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+//Utility classes
+.content-max-width {
+  width: 100%;
+  max-width: 120rem;
+ //margin: 0 auto;
+}

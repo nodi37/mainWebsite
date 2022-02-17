@@ -1,129 +1,124 @@
 <!DOCTYPE html>
-<html lang="nb-NO">
+<html lang='en'>
 
 <head>
+    <!-- meta tags -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="notranslate">
     <meta name="description" content="I want to find job in IT!">
 
+    <!-- favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
     <link rel="manifest" href="/favicon/site.webmanifest">
 
-    <link rel="stylesheet" href="/styles/style.css">
-    <link rel="stylesheet" href="/styles/media.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
-        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="/css/style.min.css">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <script src="/scripts/lang.js"></script>
-    <script src="/scripts/form.js"></script>
-    <script src="/scripts/scripts.js"></script>
+    <!-- Recaptcha v3 -->
+    <script src="https://www.google.com/recaptcha/api.js?render=6Lf3EYIeAAAAAJVpekE5gDClve_vAxS-pLe49-4V"></script>
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-0WMXVG4RDT"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-        gtag('config', 'G-0WMXVG4RDT');
-    </script>
+    <!-- My scripts -->
+    <script src='/scripts.js'></script>
 
-    <title>Lei Norbert! Han er best!</title>
 </head>
 
 <body>
-    <div class="languages">
-        <img src="/img/no.png" alt="norsk" onclick="setLang('no')">
-        <img src="/img/en.png" alt="english" onclick="setLang('en')">
-        <img src="/img/pl.png" alt="polish" onclick="setLang('pl')">
-    </div>
-    <div class="container">
-        <a class="welcome item active">
-            <div><i class="fas fa-caret-down"></i></div>
+    <header class="header content-max-width">
+
+        <a href="/" class="header__name-container header__anchor">
+            <svg class="button-icon header__icon header__name-icon">
+                <use href="/svg/icons.svg#icon-activity"></use>
+            </svg>
+            <h3 class="button--space-left header__header">Norbert Bednarczyk</h3>
         </a>
-        <a class="me item">
-            <div><i class="fas fa-user"></i></div>
+
+        <a href="mailto:nodi37@o2.pl" class="button--black header__anchor">
+            <h3 class="button--space-right header__header">nodi37@o2.pl</h3>
+            <svg class="button-icon header__icon header__email-icon">
+                <use href="/svg/icons.svg#icon-arrow-up-right"></use>
+            </svg>
         </a>
-        <a class="contact item">
-            <div><i class="fas fa-phone-alt"></i></div>
-        </a>
-        <div class="main">
-            <div id="welcome" class="view">
-                <div class="greeting">
-                    <h1>Hei!</h1>
-                    <h2>Hyggelig å se deg!</h2>
-                    <h3><i class="far fa-hand-point-left"></i>Bruk knappene til å navigere</h3>
-                </div>
+    </header>
+
+
+    <main class="main content-max-width">
+        <div class="main__left">
+            <div class="main__localization">
+                <svg class="button-icon main__localization-icon">
+                    <use href="/svg/icons.svg#icon-map-pin"></use>
+                </svg>
+                <span class="button--space-left main__localization-text">Oslo, Norway</span>
             </div>
-            <div id="me" class="view1">
-                <div class="left">
-                    <p>Jeg er </p>
-                    <h1>Norbert!</h1>
-                    <table class="lefttab">
-                        <tr>
-                            <th id="#lage">Alder:</th>
-                        </tr>
-                        <tr>
-                            <td id="#tage">25 år gammel</td>
-                        </tr>
-                        <tr>
-                            <th id="#lloc">Bosted:</th>
-                        </tr>
-                        <tr>
-                            <td id="#tloc">Oslo, Norge</td>
-                        </tr>
-                        <tr>
-                            <th id="#llang">Språk:</th>
-                        </tr>
-                        <tr>
-                            <td id="#tlang">Engelsk, Norsk, Tysk, Polsk</td>
-                        </tr>
-                        <tr>
-                            <th id="#ledu">Utdanning:</th>
-                        </tr>
-                        <tr>
-                            <td id="#tedu">Videregående skole med fagbrev i IT-bransjen</td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="line"></div>
-                <div class="right">
-                    <div class="noscroll"></div>
-                    <article>Jeg vil bare beskrive har hva jeg har gjort og hvilke løsninger brukte jeg når jeg opprettet disse små prosjektene mine og hvorfor de ser ut som de gjør. Først skal jeg skrive noen korte stikkord som kan beskrive det. Dette er: Debian, nginx, JavaScript, JQuery, HTML, CSS, Node.js, NPMjs, Express, EJS, REST API, MongoDB, GIT, React og andre. Denne nettsiden kjører på min egen VPS server med Debian operativsystem som jeg konfigurerte selv. Hovedsiden og en annen side er appene som er skrevet i Node.js, WWW serveren er NGINX. Det kjører blant andre GIT server og mongoDB database på serveren. Begge sidene var gjort for å vise spesifikke teknologier og var laget hovedsakelig for pc-en. Mens jeg laget hovedsiden, ville jeg kjenne bedre CSS Grid og JQuery. Jeg var fokusert om å endre måte å bla på. Derfor, sjekk pc versjonen hvis du leser den på mobilen. Jeg tenkte på mange ting for å forholde riktig drift, som for eksempel hvis du endrer størrelse av nettleser. Kontaktskjemaet sender post request til serveren, brukerbekreftelse ved google recaptcha fungerer også på serversiden og er sikret med Fail2Ban. På avslutt er linken til GIT oppbevaringssted, du kan klone dem og sjekke koden. Du kan også sjekke det første innlegget mitt på stackoverflow, da beskriver jeg gjennomføring av denne løsningen: <a href='https://stackoverflow.com/questions/30866070/fail2ban-custom-filter-for-custom-node-js-application/69575369#69575369'>StackOverflow</a>. Denne nettsiden koden er ikke så dårlig allerede, jeg er veldig misfornøyd med CSS og dette innlegget også, jeg tenkte ikke at jeg skal skrive so mye her. Mobilversjonen var laget veldig fort, bare til å ha det her. Jeg her også gjort oversettelser her. Jeg kunne kanskje finne løsning med google oversettelser men jeg ville ha ekstra praksis i språk. Jeg kan rette mange ting men jeg skal lage denne siden helt på nytt snart. Det andre fullstendige fungerende nettstedet er på <a href='https://blog.nbtb.eu'>Blog</a> underdomene. Det var mitt første prosjekt så kvalitet er ikke så bra. Koden er kaotisk, det filer treet også, jeg brukte bare tilbakekallsprosesser, koden ser stygg ut men fungerer. Liten kommentar er skrevet på avslutt i app.js fil. Jeg ville bare avslutte det så fort som mulig fordi jeg syntes at jeg ikke skal bruke det. Mye javascript er skrevet i ejs filer hvor, for eksempel, jeg skrevet skript som lager skript til å lage matrise på bruker siden. Det hores rart ut men fungerer bra. Du kan se den i edit.ejs fil i partials mappen. Det også viser hvordan tenker jeg. Jeg kan finne tilpassede løsninger på problemer. Hvis du leser det og ser etter ansatte, skriv til meg. Jeg skal gi deg brukernavn og passord og du kan se at den fungerer. Blog bruker mongodb, mongoose, ejs som vis motor, passport for brukerautorisasjon. <a href='https://quilljs.com'>Quill.js</a> er teksten redigerer med base64-kodering for bilder. Det er også filopplasting for innlegg hovedbilder. Automatisk publisering på den valgte datoen med verifikasjon om bruker valgte riktig dato, søkemotor for tagger og tekst. Man kan lage innlegg, publisere, fjerne osv. Jeg prøvde å lage noe REST api sa det er post, get, patch, delete request. Det er veldig vanskelig å beskrive, men jeg har tenkt mange ting. CSS er veldig dårlig, men fungerer også på mobil. Jeg ville sjekke CSS Flex da. Jeg skjønner at mange ting er galt der. Jeg skulle legge til for eksempel mer validering på serversiden nå. Denne prosjektene viste meg veldig mye, også om organisering av arbeidet. Jeg hadde problem med det først. Kvalitet av neste blir mye bedre. Det er for mange til å beskrive men jeg kan gjerne fortelle om dem. Jeg vil bare si at disse prosjektene var laget etter ett kurs fra <a href='https://udemy.com'>udemy.com</a>. Jeg så på det på 1.5 hastighet og startet å lage alt. Det tok faktisk fra 2 til 3 måneder, 18 timer i uke(fordi jeg lære norsk også) til å lage disse appene og serverkonfigurasjon. Det viser hvor fort jeg lærer. Jag har veldig mye forskjellig kunnskap men jeg måtte huske hvordan jeg skulle gjøre det og sjekke programvarekonfigurasjon igjen. Na vil jeg lage neste blogg. Jeg synes at jeg skal legge noe der. Jeg vil bruke nå React.js og node.js som api. Jeg vil lære mer om informasjonskapsler og håndtrykk. Jeg vil sende push-varsler til aktive brukere osv. Jeg må fokusere på asynkrone funksjoner, promise og klasser. Etterpå vil jeg skrive React Native app. Sa jeg har skrevet, alt kjører på serveren med Debian Linux, så hel konfigurasjon var utført av meg. GIT server, www server, kryptering og sikkerhet osv. Jeg vil starte også e-post serveren, men det er litt komplisert så jeg forlot det senere. Jeg har mye andre erfaring. Jeg husker noe om Windows Server, MySQL osv. Jeg gjorde mange forskjellige ting. Hvis du vil, kan jeg forberede meg i teknologi du trenger. Etter blogg appen vil jeg begynne å lære andre programmerings språk. Jeg vil bli fleksibel. Målet er til å ha mulighet til å lage en server konfigurasjon, lage en mobil app, en nettside og et program for PC-er med macOS eller Windows osv. Men det avhenger av hva jeg skal jobbe med. Hvis jeg skal finne jobb i firma som skal trenge f. eks. Python da jeg skal lære Python. Jeg lære også norsk på norskkurs hele tid. Jeg er hyggelig som privatperson, jeg liker å samarbeide og dele kunnskap. Du kan se det etter nevnt tidligere innlegget på stackoverflow. Jeg er flink i å finne informasjon. Jeg er interessert i elektronikk og bilindustrien, etc. Det er også for mye til å beskrive. Hvis denne beskrivelsen interesserte deg, skriv til meg på kontakt skjema nede eller skriv til meg i stedet du har fant linken til denne nettsiden. <br>Kommandoer for GIT:<br><br><div id='one' class='copybox'><p>git clone https://git.nbtb.eu/git/main</p><i class='fas fa-copy cpbtn' onclick='copy(event)'></i></div><br><br><br><div id='two' class='copybox'><p>git clone https://git.nbtb.eu/git/blog</p><i class='fas fa-copy cpbtn' onclick='copy(event)'></i></div><br><br><br>Hvis du har problem med ssl sertifikater da bruk:<br><br><div id='three' class='copybox'><p>git config --global http.sslVerify 'false'</p><i class='fas fa-copy cpbtn' onclick='copy(event)'></i></div> <br><br><br>Etter kloning kan du hente tilbake tidligere innstillinger:<br><br><div id='four' class='copybox'><p>git config --global http.sslVerify 'true'</p><i class='fas fa-copy cpbtn' onclick='copy(event)'></i></div><br><br><br>Serveren er kryptert men GIT godkjenner ikke alle sertifikater. Hvis du ikke vil, da skriv til meg. Jeg kan sende det på annen mate. Jeg kan sende sertifikater fra skolen og norskkurs også. Jeg hoper at vi ser snart! :)
-                    </article>
-                    <div class="noscroll"></div>
-                </div>
+            <div class="main__welcome">
+                <h1 class="main__welcome-text main__welcome-header">Hello,</h1>
+                <h1 class="main__welcome-name main__welcome-header">I'm Norbert!</h1>
             </div>
-            <div id="contact" class="view3">
-                <div id="tosend">
-                    <h1>Vil du vite mer om meg? Kontakt meg!<i class='far fa-hand-point-down'></i></h1>
-                    <form id="gridform" class="gridform" action="/" method="post">
-                        <input type="email" class="email" name="email" id="email" placeholder="E-posten din..."
-                            required>
-                        <textarea class="mess" type="text" name="message" id="message" onfocus="fnClear(this)"
-                            required>Din melding...</textarea>
-                        <div class="g-recaptcha" data-theme="dark" data-size="normal"
-                            data-sitekey="6LcLfJ4cAAAAABYXlrUo5ojuoXwGHgJIWI4iJTLO"></div>
-                        <p id="inf"></p>
-                        <button class="sbutton" type="submit"><i class="far fa-paper-plane"></i></button>
-                    </form>
-                </div>
-                <div id="reply" class="hidden"></div>
+            <div class="main__description">
+                <strong class="main__description-text">
+                    I'm looking for work as a junior developer!
+                </strong>
+                <strong class="main__description-text">
+                    Find more about me here!
+                </strong>
             </div>
+
+            <div class="main__button-container">
+                <a href="#skills" class="button--black main__href main__button">
+                    <h3 class="button--space-right main__button-text">Skills</h3>
+                    <svg class="button-icon main__a-icon">
+                        <use href="/svg/icons.svg#icon-arrow-up-right"></use>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="main__button-container">
+
+                <a href="" class="button--black main__href main__button" target="_blank">
+                    <h3 class="button--space-right main__button-text">GitHub</h3>
+                    <svg class="button-icon main__a-icon">
+                        <use href="/svg/icons.svg#icon-arrow-up-right"></use>
+                    </svg>
+                </a>     
+
+                <a href="" class="button--black main__href main__button" target="_blank">
+                    <h3 class="button--space-right main__button-text">LinkedIn</h3>
+                    <svg class="button-icon main__a-icon">
+                        <use href="/svg/icons.svg#icon-arrow-up-right"></use>
+                    </svg>
+                </a>
+                
+                <a href="" class="button--black main__href main__button" target="_blank">
+                    <h3 class="button--space-right main__button-text">Facebook</h3>
+                    <svg class="button-icon main__a-icon">
+                        <use href="/svg/icons.svg#icon-arrow-up-right"></use>
+                    </svg>
+                </a>
+                
+                <a href="" class="button--black main__href main__button" target="_blank">
+                    <h3 class="button--space-right main__button-text">Instagram</h3>
+                    <svg class="button-icon main__a-icon">
+                        <use href="/svg/icons.svg#icon-arrow-up-right"></use>
+                    </svg>
+                </a>
+
+            </div>
+
         </div>
-    </div>
-    <div id="notify">
-        <div class="inf">
-            <p>You can change language in top right corner.</p>
+        <div class="main__right">
+                <img src="/img/me.jpg" alt="That's me!" class="main__image">
         </div>
-        <button onclick="$('#notify').slideToggle(1000)">Ok! Thanks!</button>
-    </div>
+    </main>
+
+
+
+
 </body>
+
 </html>
