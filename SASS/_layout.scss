@@ -13,4 +13,14 @@ body {
     border-radius: 10px;
     box-shadow: var(--card-shadow);
     background-image: var(--card-gradient);
+
+    @media only screen and (max-width: 59.375em) {
+        //950px Mobile Ver
+        border-radius: 0;
+        padding: 2rem;
+      }
+}
+
+.grecaptcha-badge {
+    display: none !important;
 }

@@ -5,24 +5,40 @@
   --main-section-text-color: white;
 
   --color-text-secondary: white;
-  //--color-text-secondary: dimgray;
 
-  --color-card-one: #e02401;
+  --color-card-primary: #e02401;
+
+  --color-card-secondary: #f76e11;
 
   --background-gradient: linear-gradient(to right bottom, #9ad0ec, #1572a1);
 
-  --card-gradient: linear-gradient(to left top, #f76e11, #e02401);
+  --card-gradient: linear-gradient(
+    to left top,
+    var(--color-card-secondary),
+    var(--color-card-primary)
+  );
 
   --card-shadow: 0 0 6rem #0000005b;
 
   --image-border: 10px solid white;
 
-  --popup-backgroud: linear-gradient(to right bottom, #395b6498, #2c3333a1);
+  --popup-backgroud: linear-gradient(to right bottom, #395b64cd, #2c3333c4);
 
-  --popup-content-backgroud: linear-gradient(to left top, #D3DEDC, #92A9BD);
+  --popup-content-backgroud: linear-gradient(to left top, #f76e11, #e02401);
+
+  --popup-color-secondary: wheat;
+
+  --popup-font-color: white;
+
+  --popup-link-color: black;
+
+  //--popup-color-secondary:darkseagreen;
+  //--popup-color-secondary: deeppink;
+  //--popup-color-secondary: deepskyblue;
+  //--popup-color-secondary: tomato;
+  //--popup-color-secondary: orangered;
+  //--popup-color-secondary: #d40602;
 }
-
-//800PX do mobilnego!
 
 *,
 *::after,
@@ -50,6 +66,11 @@ html {
   @media only screen and (max-width: 90em) {
     //1440px
     font-size: 45%;
+  }
+
+  @media only screen and (max-width: 59.375em) {
+    //950px Mobile Ver
+    font-size: 62.5%;
   }
 
   @media only screen and (min-width: 137.5em) {
@@ -102,5 +123,27 @@ html {
 
   100% {
     transform: translate(0);
+  }
+}
+
+@keyframes spinListItem {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes moveBottomLeft {
+  0% {
+    transform: rotate(30deg) translate(0, 0);
+  }
+  50% {
+    transform: rotate(30deg) translate(0, 10px);
+  }
+  100% {
+    transform: rotate(30deg) translate(0, 0);
   }
 }

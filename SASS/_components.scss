@@ -5,7 +5,7 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 5rem;
-  animation: makeVisible 1s 4s;
+  animation: makeVisible 1s 3s;
   animation-fill-mode: backwards;
 
   &__anchor,
@@ -52,21 +52,34 @@
 
 .main {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-evenly;
   color: var(--main-section-text-color);
   font-weight: 700;
   cursor: default;
 
-  &__left {
+  @media only screen and (max-width: 59.375em) {
+    //950px Mobile Ver
+    flex-direction: column;
+  }
+
+  & > * {
     flex: 0 0 48%;
+    @media only screen and (max-width: 59.375em) {
+      //950px Mobile Ver
+      flex: 1 1 auto;
+      margin-bottom: 5rem;
+    }
+  }
+
+  &__left {
     align-self: center;
+    overflow: hidden;
   }
 
   &__localization {
     position: relative;
     color: var(--color-text-secondary);
-    animation: makeVisible 1s 4s;
+    animation: makeVisible 1s 3s;
     animation-fill-mode: backwards;
 
     &-text {
@@ -106,7 +119,7 @@
   }
 
   &__description {
-    margin: 1rem 0 7rem 0;
+    margin: 1rem 0 3rem 0;
 
     &-text {
       display: block;
@@ -117,11 +130,28 @@
     }
   }
 
+  &__indicator {
+    margin-bottom: 3rem;
+
+    animation: makeVisible 1s 4s;
+    animation-fill-mode: backwards;
+
+    &-icon {
+      transform: rotate(30deg);
+      margin-left: 20%;
+      display: inline-block;
+      height: 5rem;
+      width: 5rem;
+      fill: currentColor;
+      animation: moveBottomLeft 1s linear 6s infinite;
+    }
+  }
+
   &__button-container {
     display: flex;
     flex-wrap: wrap;
     column-gap: 2.5rem;
-    animation: makeVisible 1s 4s;
+    animation: makeVisible 1s 3s;
     animation-fill-mode: backwards;
 
     &:not(:last-child) {
@@ -154,22 +184,36 @@
   }
 
   &__right {
-    flex: 0 0 48%;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: center;
+
+    @media only screen and (max-width: 59.375em) {
+      //950px Mobile Ver
+      justify-content: center;
+    }
   }
 
   &__image {
     display: block;
     width: 50rem;
     height: 50rem;
+    @media only screen and (max-width: 34.375em) {
+      //Under 550px
+      width: 40rem;
+      height: 40rem;
+    }
+    @media only screen and (max-width: 26.25em) {
+      //Under 420px
+      width: 30rem;
+      height: 30rem;
+    }
     object-fit: cover;
     object-position: center bottom;
     border: var(--image-border);
     border-radius: 50%;
     outline: solid white 0;
-    animation: makeVisible 1s 4s;
+    animation: makeVisible 1s 3s;
     animation-fill-mode: backwards;
     transition: all 0.5s;
   }
@@ -183,45 +227,178 @@
 }
 
 .popup {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  background-image: var(--popup-backgroud);
+  opacity: 0;
+  visibility: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+
+  font-size: 1.3rem;
+  color: var(--popup-font-color);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-image: var(--popup-backgroud);
+  z-index: 999;
+
+  transition: all 0.5s 0.3s;
+  cursor: default;
+
+  &:target {
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.5s;
+  }
+
+  &:target > &__content {
+    transform: scale(100%);
+    transition: all 0.5s;
+  }
+
+  //Instead of overscroll-behaviour which is not working in Safari.
+  //Only for mobile versions
+  &:target + .card {
+    @media only screen and (max-width: 59.375em) {
+      //950px Mobile Ver
+      position: fixed;
+      top: 0;
+      overflow: hidden;
+    }
+  }
 
   &__exit,
   &__exit:link,
   &__exit:visited {
     position: absolute;
-    top: -.5rem;
-    right: .5rem;
-    color: white;
+    top: 1rem;
+    right: 1rem;
+    color: var(--popup-font-color);
     text-decoration: none;
-    font-size: 5rem;
+    font-size: 2rem;
     line-height: 1;
   }
 
   &__content {
-      position: relative;
-      padding: 3rem;
-      background-image: var(--popup-content-backgroud);
-      border-radius: 5px;
-      max-width: 60%;
+    position: relative;
+    padding: 1.5rem;
+    background-image: var(--popup-content-backgroud);
+    border-radius: 10px;
+    max-width: 60%;
+    @media only screen and (max-width: 59.375em) {
+      //950px Mobile Ver
+      max-width: 90%;
+      height: 90%;
+      max-height: 50rem;
+      overflow: scroll;
+      overscroll-behavior: contain;
+    }
+
+    transform: scale(0%);
+    transition: all 0.5s;
   }
 
   &__tables {
-      display: flex;
-      //justify-content: space-between;
-      gap: 1%;
+    display: flex;
+    justify-content: center;
+    gap: 1%;
+    margin-bottom: 2rem;
+    line-height: 1.5;
   }
 
   &__table-container {
-      //flex: 0 0 auto;
+    flex: 0 0 48%;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
+  &__table-divider {
+    width: 1px;
+    background-color: currentColor;
+  }
+
+  &__table-header {
+    color: white;
+    margin-bottom: 2rem;
+  }
+
+  &__table {
+    column-count: 2;
+    column-gap: 5rem;
+    @media only screen and (max-width: 59.375em) {
+      //950px Mobile Ver
+      column-count: 1;
+    }
+  }
+
+  &__table-item {
+    position: relative;
+    display: block;
+    break-inside: avoid-column;
+    transition: all 0.5s;
+    cursor: pointer;
+    &:not(:last-child) {
+      margin-bottom: 2px;
+    }
+  }
+
+  &__table-item:hover {
+    color: var(--popup-color-secondary);
+  }
+
+  &__table-item::before {
+    content: "\2234";
+    color: currentColor;
+    line-height: 1;
+    font-size: 2.5rem;
+    font-weight: 900;
+    position: absolute;
+    width: 3rem;
+    height: 3rem;
+    top: -0.5rem;
+    left: -2.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__table-item:hover::before {
+    animation-name: spinListItem;
+    animation-duration: 1.3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    transform-origin: center 60%;
+  }
+
+  &__description {
+    display: block;
+    text-align: justify;
+    text-justify: inter-word;
+    padding: 1rem;
+
+    cursor: default;
+  }
+
+  &__link,
+  &__link:link,
+  &__link:visited {
+    color: var(--color-card-primary);
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 5px;
+    padding: 0.2rem;
+    background-color: var(--popup-font-color);
+    transition: all 0.5s;
+  }
+
+  &__link:hover {
+    color: var(--popup-font-color);
+    background-color: var(--color-card-primary);
+  }
 }
 
 //SMALL COMPONENTS
@@ -235,7 +412,7 @@
   }
 
   &--white:hover {
-    color: var(--color-card-one);
+    color: var(--color-card-primary);
     background-color: white;
   }
 
