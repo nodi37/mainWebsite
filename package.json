@@ -9,7 +9,7 @@
     "start": "npm-run-all --parallel watch:sass live-server",
     "remove:css": "del-cli --force public/css/style.min.css",
     "compile:sass": "node-sass SASS/main.scss public/css/compiled.style-ty-jonas-schmedtmann.css",
-    "prefix:css": "postcss --use autoprefixer -b 'last 10 versions' public/css/compiled.style-ty-jonas-schmedtmann.css -o public/css/prefixes.style-ty-jonas-schmedtmann.css",
+    "prefix:css": "postcss --use autoprefixer -b 'last 50 versions' public/css/compiled.style-ty-jonas-schmedtmann.css -o public/css/prefixes.style-ty-jonas-schmedtmann.css",
     "compress:css": "node-sass public/css/compiled.style-ty-jonas-schmedtmann.css public/css/style.min.css --output-style compressed",
     "clean:css": "del-cli --force public/css/*.style-ty-jonas-schmedtmann.css",
     "build:css": "npm-run-all remove:css compile:sass prefix:css compress:css clean:css"
