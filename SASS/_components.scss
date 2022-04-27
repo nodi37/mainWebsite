@@ -328,17 +328,22 @@
   }
 
   &__table {
+    list-style: inside;
     column-count: 2;
     column-gap: 5rem;
     @media only screen and (max-width: 59.375em) {
       //950px Mobile Ver
       column-count: 1;
     }
+
+    &--one-column {
+      column-count: 1;
+      width: 100%;
+    }
   }
 
   &__table-item {
     position: relative;
-    display: block;
     break-inside: avoid-column;
     transition: all 0.5s;
     cursor: pointer;
@@ -351,29 +356,29 @@
     color: var(--popup-color-secondary);
   }
 
-  &__table-item::before {
-    content: "\2234";
-    color: currentColor;
-    line-height: 1;
-    font-size: 2.5rem;
-    font-weight: 900;
-    position: absolute;
-    width: 3rem;
-    height: 3rem;
-    top: -0.5rem;
-    left: -2.7rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  // &__table-item::before {
+  //   content: "\2234";
+  //   color: currentColor;
+  //   line-height: 1;
+  //   font-size: 2.5rem;
+  //   font-weight: 900;
+  //   position: absolute;
+  //   width: 3rem;
+  //   height: 3rem;
+  //   top: -0.5rem;
+  //   left: -2.7rem;
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  // }
 
-  &__table-item:hover::before {
-    animation-name: spinListItem;
-    animation-duration: 1.3s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-    transform-origin: center 60%;
-  }
+  // &__table-item:hover::before {
+  //   animation-name: spinListItem;
+  //   animation-duration: 1.3s;
+  //   animation-iteration-count: infinite;
+  //   animation-timing-function: linear;
+  //   transform-origin: center 60%;
+  // }
 
   &__description {
     display: block;
